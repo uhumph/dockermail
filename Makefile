@@ -18,23 +18,22 @@ owncloud: dovecot
 	cd owncloud; docker build -t owncloud:7.0.2 .
 
 run-dovecot:
-	docker run -it \
+	docker run \
 		--name mailstack-dovecot \
-		-d -p 0.0.0.0:25:25 -p 0.0.0.0:587:587 -p 0.0.0.0:143:143 -v /srv/vmail:/srv/vmail dovecot:2.1.7 \
-		/bin/bash
+		-d -p 0.0.0.0:25:25 -p 0.0.0.0:587:587 -p 0.0.0.0:143:143 -v /srv/vmail:/srv/vmail dovecot:2.1.7
 
 run-rainloop:
-	docker run -it \
+	docker run \
 		--name mailstack-rainloop \
 		-d -p 127.0.0.1:33100:80 rainloop:1.6.9
 
 run-mailpile:
-	docker run -it \
+	docker run \
 		--name mailstack-mailpile \
 		-d -p 127.0.0.1:33411:33411 mailpile:latest
 
 run-owncloud:
-	docker run -it \
+	docker run \
 		--name mailstack-owncloud \
 		-d -p 127.0.0.1:33200:80 -v /srv/owncloud:/var/www/owncloud/data owncloud:7.0.2 
 
