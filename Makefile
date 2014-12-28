@@ -20,7 +20,8 @@ owncloud: dovecot
 run-dovecot:
 	docker run -it \
 		--name mailstack-dovecot \
-		-d -p 0.0.0.0:25:25 -p 0.0.0.0:587:587 -p 0.0.0.0:143:143 -v /srv/vmail:/srv/vmail dovecot:2.1.7
+		-d -p 0.0.0.0:25:25 -p 0.0.0.0:587:587 -p 0.0.0.0:143:143 -v /srv/vmail:/srv/vmail dovecot:2.1.7 \
+		/bin/bash
 
 run-rainloop:
 	docker run -it \
