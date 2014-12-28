@@ -47,3 +47,12 @@ stop-owncloud:
 	docker stop mailstack-owncloud
 
 stop-all: stop-dovecot stop-rainloop stop-owncloud
+
+rm-dovecot:
+	docker rm mailstack-dovecot
+rm-rainloop:
+	docker rm mailstack-rainloop
+rm-owncloud:
+	docker rm mailstack-owncloud
+
+rm-all: rm-dovecot rm-rainloop rm-owncloud
