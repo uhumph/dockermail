@@ -63,6 +63,6 @@ EXPOSE 587
 # todo: enable port 587 for outgoing mail, separate ports 25 and 587
 # http://www.synology-wiki.de/index.php/Zusaetzliche_Ports_fuer_Postfix
 
-# start necessary services for operation (dovecot -F starts dovecot in the foreground to prevent container exit)
-ENTRYPOINT chown -R vmail:vmail /srv/vmail; service rsyslog start; service postfix start; dovecot -F
+# start necessary services for operation
+ENTRYPOINT chown -R vmail:vmail /srv/vmail; service rsyslog start; service postfix start; dovecot
 
