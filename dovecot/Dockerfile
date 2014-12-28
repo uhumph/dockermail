@@ -36,7 +36,7 @@ RUN postmap /etc/postfix/virtual-mailbox-maps
 # add user vmail who own all mail folders
 RUN groupadd -g 5000 vmail
 RUN useradd -g vmail -u 5000 vmail -d /srv/vmail -m
-RUN chown -R vmail:vmail /srv/vmail
+RUN mkdir -p /srv/vmail ; chown -R vmail:vmail /srv/vmail
 RUN chmod u+w /srv/vmail
 
 # dovecot configuration
@@ -64,5 +64,5 @@ EXPOSE 587
 # http://www.synology-wiki.de/index.php/Zusaetzliche_Ports_fuer_Postfix
 
 # start necessary services for operation
-ENTRYPOINT chown -R vmail:vmail /srv/vmail; service rsyslog start; service postfix start; dovecot; /bin/bash
-
+RUN service rsyslog start; service postfix start
+ENTRYPOINT dovecot -F
