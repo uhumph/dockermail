@@ -71,6 +71,9 @@ be delivered to the corresponding account in the right column.
 
 To get the hash values, you can either install dovecot locally or use lxc-attach to attach to the running
 container and run `doveadm pw -s <scheme-name>` inside.
+ '''bash
+ sudo docker exec -it mailstack-dovecot doveadm pw -s sha256-crypt
+ '''
 
 4) Build containers:
 
